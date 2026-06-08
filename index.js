@@ -189,3 +189,10 @@ client.on('messageCreate', async (message) => {
 });
 
 client.login(process.env.DISCORD_TOKEN);
+
+// Render Web Service用：ポートをリッスンしてタイムアウトを防ぐ
+const http = require('http');
+const PORT = process.env.PORT || 3000;
+http.createServer((req, res) => res.end('OK')).listen(PORT, () => {
+  console.log(`HTTP server listening on port ${PORT}`);
+});
